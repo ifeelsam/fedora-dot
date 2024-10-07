@@ -1,0 +1,101 @@
+live_config_reload = true
+#import = [
+# "~/.config/alacritty/catppuccin/catppuccin-mocha.toml"
+#]
+[cursor]
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Never"
+
+[env]
+TERM = "xterm-256color"
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+  # Default colors
+  [colors.primary]
+    background = '0x141b1e'
+    foreground =  '0xdadada'
+
+  [colors.cursor]
+    text = '0xdadada'
+    cursor = '0xdadada'
+
+  # Normal colors
+  [colors.normal]
+    black =   '0x232a2d'
+    red =     '0xe57474'
+    green =   '0x8ccf7e'
+    yellow =  '0xe5c76b'
+    blue =     '0x67b0e8'
+    magenta = '0xc47fd5'
+    cyan =    '0x6cbfbf'
+    white =   '0xb3b9b8'
+
+  # Bright colors
+  [colors.bright]
+    black =   '0x2d3437'
+    red =     '0xef7e7e'
+    green =   '0x96d988'
+    yellow =  '0xf4d67a'
+    blue =    '0x71baf2'
+    magenta = '0xce89df'
+    cyan =    '0x67cbe7'
+    white =   '0xbdc3c2'
+
+[font]
+size = 12
+
+[font.normal]
+# family = "MonoLisa Nerd Font Mono"
+
+family = "FiraMono Nerd Font Mono"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B."
+key = "."
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001Bh"
+key = "Enter"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001Bh"
+key = "H"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u001Bl"
+key = "L"
+mods = "Super"
+
+[scrolling]
+history = 2000
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = "|:\"' {}()[]<>"
+
+[window]
+dynamic_padding = true
+decorations = "full"
+title = "Alacritty"
+opacity = 0.8
+decorations_theme_variant = "Dark"
+
+[window.dimensions]
+columns = 120
+lines = 40
+
+[window.padding]
+x = 10
+y = 5
