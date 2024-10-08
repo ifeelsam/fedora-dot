@@ -7,35 +7,90 @@
 // from the command palette.
 [
   {
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "space e": "workspace::ToggleLeftDock"
+    }
+  },
+  {
     "context": "vim_mode == normal",
     "bindings": {
       "space space": "file_finder::Toggle",
+      "space ,": "buffer_search::FocusEditor",
+      "space :": "command_palette::Toggle",
+      "space f f": "file_finder::Toggle",
+      "space w v": "pane::SplitVertical",
+      "space |": "pane::SplitVertical",
+      "space w s": "pane::SplitHorizontal",
+      "space w q": "pane::CloseActiveItem",
+      "space w h": ["workspace::ActivatePaneInDirection", "Left"],
+      "space w l": ["workspace::ActivatePaneInDirection", "Right"],
+      "space w j": ["workspace::ActivatePaneInDirection", "Up"],
+      "space w k": ["workspace::ActivatePaneInDirection", "Down"],
+      "g D": "editor::GoToDefinition",
+      "g d": "editor::GoToDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+      "K": "editor::Hover",
+      "[d": "editor::GoToPrevDiagnostic",
+      "space c a": "editor::ToggleCodeActions",
+      "space r n": "editor::Rename",
+      "ctrl /": "workspace::OpenTerminal",
       "space e": "workspace::ToggleLeftDock",
-      "gd": "editor::GoToDefinition",
-      "ctrl /": "workspace::OpenTerminal"
+      "space q q": ["workspace::CloseActivePane", "workspace::CloseWindow"],
+      "space u f": "editor::ToggleAutoFormat",
+      "space u s": "editor::ToggleSpellCheck",
+      "space u w": "editor::ToggleWrap",
+      "space u l": "editor::ToggleLineNumbers",
+      "space g g": "workspace::OpenTerminal",
+      "space s r": "search::ToggleReplace"
     }
   },
   {
     "context": "workspace",
     "bindings": {
-      "ctrl /": "workspace::OpenTerminal"
+      "ctrl /": "workspace::OpenTerminal",
+      "ctrl p": "file_finder::Toggle",
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
     }
   },
   {
     "context": "ProjectPanel",
-    "bindings": {}
-  },
-  {
-    "context": "ProjectPanel && not_editing",
     "bindings": {
-      "r": "project_panel::Rename"
+      "a": "project_panel::NewFile",
+      "d": "project_panel::Delete",
+      "y": "project_panel::Copy",
+      "x": "project_panel::Cut",
+      "p": "project_panel::Paste",
+      "r": "project_panel::Rename",
+      "space e": "workspace::ToggleLeftDock"
     }
   },
   {
     "context": "Editor",
     "bindings": {
       "j k": ["workspace::SendKeystrokes", "escape"],
-      "ctrl-/": "workspace::OpenTerminal"
+      "ctrl s": ["editor::Save"],
+      "ctrl z": ["editor::Undo"],
+      "ctrl y": ["editor::Redo"],
+      "alt j": ["editor::MoveLineDown"],
+      "alt k": ["editor::MoveLineUp"],
+      "shift h": ["buffer_selector::SelectPrev"],
+      "shift l": ["buffer_selector::SelectNext"],
+      "[b": ["buffer_selector::SelectPrev"],
+      "]b": ["buffer_selector::SelectNext"]
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"],
+      "ctrl k": ["editor::ShowHover"]
     }
   }
 ]

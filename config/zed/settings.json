@@ -18,6 +18,17 @@
     "light": "Ayu Light",
     "dark": "Ayu Dark"
   },
+  "languages": {
+    "JavaScript": {
+      "format_on_save": "off"
+    },
+    "TypeScript": {
+      "format_on_save": "off"
+    },
+    "TSX": {
+      "format_on_save": "off"
+    }
+  },
   "buffer_font_family": "FiraCode Nerd Font Mono",
   "experimental.theme_overrides": {
     "background.appearance": "blurred",
