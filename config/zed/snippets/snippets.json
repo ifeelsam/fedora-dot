@@ -1,0 +1,93 @@
+{
+  "React Function Component": {
+    "prefix": "rfc",
+    "body": [
+      "const ${1:ComponentName} = () => {",
+      "  return (",
+      "    <div>",
+      "      $0",
+      "    </div>",
+      "  )",
+      "}",
+      "",
+      "export default ${1:ComponentName}"
+    ]
+  },
+  "React Function Component with Props": {
+    "prefix": "rfcp",
+    "body": [
+      "export const ${1:ComponentName} = () => {",
+      "  return (",
+      "    <div>",
+      "      $0",
+      "    </div>",
+      "  )",
+      "}"
+    ]
+  },
+  "useState Hook": {
+    "prefix": "rus",
+    "body": [
+      "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState${2:<${3:type}>}(${4:initialState})"
+    ]
+  },
+  "useEffect Hook": {
+    "prefix": "rue",
+    "body": [
+      "useEffect(() => {",
+      "  ${1:effect}",
+      "  ${2:return () => {",
+      "    ${3:cleanup}",
+      "  \\}}",
+      "}, [${4:dependencies}])"
+    ]
+  },
+  "useCallback Hook": {
+    "prefix": "ruc",
+    "body": [
+      "const ${1:callback} = useCallback((${2:params}) => {",
+      "  ${3:callbackBody}",
+      "}, [${4:dependencies}])"
+    ]
+  },
+  "useMemo Hook": {
+    "prefix": "rum",
+    "body": [
+      "const ${1:memoized} = useMemo(() => {",
+      "  ${2:computation}",
+      "}, [${3:dependencies}])"
+    ]
+  },
+  "React Context": {
+    "prefix": "rcontext",
+    "body": [
+      "import { createContext, useContext } from 'react'",
+      "",
+      "interface ${1:Context}Type {",
+      "  ${2:property}: ${3:type}",
+      "}",
+      "",
+      "const ${1:Context}Context = createContext<${1:Context}Type | undefined>(undefined)",
+      "",
+      "export const use${1:Context} = () => {",
+      "  const context = useContext(${1:Context}Context)",
+      "  if (context === undefined) {",
+      "    throw new Error('use${1:Context} must be used within a ${1:Context}Provider')",
+      "  }",
+      "  return context",
+      "}",
+      "",
+      "export const ${1:Context}Provider = ({ children }: { children: React.ReactNode }) => {",
+      "  const value = {",
+      "    ${2:property}: ${4:value}",
+      "  }",
+      "",
+      "  return (",
+      "    <${1:Context}Context.Provider value={value}>",
+      "      {children}",
+      "    </${1:Context}Context.Provider>",
+      "  )",
+      "}"
+    ]
+  }
+}

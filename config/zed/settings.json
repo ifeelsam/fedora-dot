@@ -1,9 +1,22 @@
 {
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "chat_panel": {
+    "dock": "right"
+  },
+  "project_panel": {
+    "dock": "right"
+  },
   "tab_bar": {
     "show": true
   },
   "show_inline_completions": false,
   "assistant": {
+    "dock": "right",
     "default_model": {
       "provider": "ollama",
       "model": "llama3.1:latest"
@@ -16,23 +29,25 @@
   "theme": {
     "mode": "system",
     "light": "Ayu Light",
-    "dark": "Ayu Dark"
+    "dark": "Blackula"
   },
+  "tab_size": 2,
   "languages": {
     "JavaScript": {
       "format_on_save": "off"
     },
     "TypeScript": {
-      "format_on_save": "off"
+      "format_on_save": "on"
     },
     "TSX": {
-      "format_on_save": "off"
+      "format_on_save": "on"
     }
   },
   "buffer_font_family": "FiraCode Nerd Font Mono",
   "experimental.theme_overrides": {
-    "background.appearance": "blurred",
-    "background": "#D9D9D901",
+    "background.appearance": "opaque",
+    "background": "#181818FE",
+    // "background": "#D9090901",
     // "background": "#D9FFFF01",
     "editor.background": "#00000070",
     "editor.gutter.background": "#00000070",

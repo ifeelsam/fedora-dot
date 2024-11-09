@@ -12,7 +12,7 @@
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
       "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "space e": "workspace::ToggleLeftDock"
+      "ctrl-/": "workspace::ToggleBottomDock"
     }
   },
   {
@@ -38,20 +38,23 @@
       "space c a": "editor::ToggleCodeActions",
       "space r n": "editor::Rename",
       "ctrl /": "workspace::OpenTerminal",
-      "space e": "workspace::ToggleLeftDock",
+      "space e": "workspace::ToggleRightDock",
       "space q q": ["workspace::CloseActivePane", "workspace::CloseWindow"],
-      "space u f": "editor::ToggleAutoFormat",
-      "space u s": "editor::ToggleSpellCheck",
-      "space u w": "editor::ToggleWrap",
+      "space u w": "editor::ToggleSoftWrap",
       "space u l": "editor::ToggleLineNumbers",
       "space g g": "workspace::OpenTerminal",
       "space s r": "search::ToggleReplace"
     }
   },
   {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-`": "workspace::ToggleBottomDock"
+    }
+  },
+  {
     "context": "workspace",
     "bindings": {
-      "ctrl /": "workspace::OpenTerminal",
       "ctrl p": "file_finder::Toggle",
       "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
@@ -62,19 +65,16 @@
   {
     "context": "ProjectPanel",
     "bindings": {
-      "a": "project_panel::NewFile",
+      "%": "project_panel::NewFile",
+      "D": "project_panel::NewDirectory",
       "d": "project_panel::Delete",
-      "y": "project_panel::Copy",
-      "x": "project_panel::Cut",
-      "p": "project_panel::Paste",
-      "r": "project_panel::Rename",
-      "space e": "workspace::ToggleLeftDock"
+      "R": "project_panel::Rename",
+      "space e": "workspace::ToggleRightDock"
     }
   },
   {
     "context": "Editor",
     "bindings": {
-      "j k": ["workspace::SendKeystrokes", "escape"],
       "ctrl s": ["editor::Save"],
       "ctrl z": ["editor::Undo"],
       "ctrl y": ["editor::Redo"],
