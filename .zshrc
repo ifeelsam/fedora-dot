@@ -5,7 +5,7 @@ export PATH="/home/sam/.local/share/solana/install/active_release/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 # go pathe
 export PATH=$PATH:~/go/bin
-
+export PATH=$PATH:/usr/local/go/bin
 #eval "$(starship init zsh)"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -73,10 +73,25 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  zsh-autosuggestions
+  git
+  zsh-syntax-highlighting
+  fzf-tab
+)
+# zsh auto completions
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
+# removes underline path
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+
+# autosuggest configs
+bindkey '$' autosuggest-accept
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#9e9e9e'
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -187,6 +202,9 @@ alias nivn="nvim"
 alias nvin="nvim"
 alias vnim="nvim"
 alias vim="nvim"
+alias py="python3"
+alias i='sudo dnf install'
+alias list="gh repo list"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -199,11 +217,26 @@ export NVM_DIR="$HOME/.nvm"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-#Pip  
+# Pip
 export PATH="$HOME/.local/bin:$PATH"
 #android-studio
 export ANDROID_HOME="/home/sam/Android/Sdk/"
 export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 
 export DOCKER_CONTEXT=desktop-linux
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+#deno completion
+fpath=(~/.oh-my-zsh/completions $fpath)
+autoload -U compinit
+compinit
+
+# pnpm
+export PNPM_HOME="/home/sam/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+export WALLET_JSON="$(cat ~/Documents/wallety.json)"

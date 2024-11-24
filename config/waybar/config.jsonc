@@ -5,7 +5,7 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "height": 30,
+  "height": 20,
   "modules-left": [
     "custom/app-menu",
     "hyprland/window",
@@ -26,7 +26,7 @@
     "clock"
   ],
   "custom/app-menu": {
-    "format": " ",
+    "format": "",
     "on-click": "~/.config/rofi/rofi-app-menu/app-menu",
     "tooltip": false
   },
@@ -60,7 +60,15 @@
   "network": {
     "interface": "wlp4s0",
     "format": "{ifname}",
-    "format-wifi": "",
+    "format-wifi": "{icon}",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "on-click": "nm-connection-editor",
     "format-ethernet": "{ifname} ",
     "tooltip-format": "{ifname}",
     "format-disconnected": "",
@@ -68,6 +76,10 @@
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
+    "signal-strength-1": 20,
+    "signal-strength-2": 40,
+    "signal-strength-3": 60,
+    "signal-strength-4": 80
   },
   "custom/chats": {
     "format": "Chats",
