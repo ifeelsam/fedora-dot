@@ -5,19 +5,19 @@ UserScripts=$HOME/.config/hypr/UserScripts
 
 # Define file_exists function
 file_exists() {
-	if [ -e "$1" ]; then
-		return 0 # File exists
-	else
-		return 1 # File does not exist
-	fi
+  if [ -e "$1" ]; then
+    return 0 # File exists
+  else
+    return 1 # File does not exist
+  fi
 }
 
 # Kill already running processes
-_ps=(waybar rofi swaync)
+_ps=(waybar hyprpaper rofi swaync)
 for _prs in "${_ps[@]}"; do
-	if pidof "${_prs}" >/dev/null; then
-		pkill "${_prs}"
-	fi
+  if pidof "${_prs}" >/dev/null; then
+    pkill "${_prs}"
+  fi
 done
 
 sleep 0.3
@@ -28,10 +28,12 @@ waybar &
 sleep 0.5
 swaync >/dev/null 2>&1 &
 
+sleep 0.4
+hyprpaper &
 # Relaunching rainbow borders if the script exists
 sleep 1
 if file_exists "${UserScripts}/RainbowBorders.sh"; then
-	${UserScripts}/RainbowBorders.sh &
+  ${UserScripts}/RainbowBorders.sh &
 fi
 
 # for cava-pywal (note, need to manually restart cava once wallpaper changes)
