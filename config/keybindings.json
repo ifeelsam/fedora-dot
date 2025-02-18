@@ -1,0 +1,48 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+shift+e",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "-editor.action.clipboardCopyAction"
+  },
+  {
+    "key": "/",
+    "command": "actions.find",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space space",
+    "command": "workbench.action.quickOpen",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "/",
+    "command": "-actions.find",
+    "when": "editorFocus && vim.mode != 'Normal'"
+  },
+  {
+    "key": "/",
+    "command": "-list.toggleKeyboardNavigation"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "-actions.find"
+  },
+  {
+    "key": "space",
+    "command": "filesExplorer.openFilePreserveFocus",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    "key": "space",
+    "command": "-filesExplorer.openFilePreserveFocus",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsFolder && !inputFocus"
+  }
+]
