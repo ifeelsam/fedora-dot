@@ -1,0 +1,232 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+shift+e",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "-editor.action.clipboardCopyAction"
+  },
+  {
+    "key": "space space",
+    "command": "workbench.action.quickOpen",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space w q",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "-editor.action.clipboardCopyAction"
+  },
+  {
+    "key": "/",
+    "command": "actions.find",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "/",
+    "command": "-actions.find",
+    "when": "editorFocus && vim.mode != 'Normal'"
+  },
+  {
+    "key": "/",
+    "command": "-list.toggleKeyboardNavigation"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "-actions.find"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLeftGroup"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusRightGroup"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusAboveGroup"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusBelowGroup"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "space :",
+    "command": "workbench.action.showCommands",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space f f",
+    "command": "workbench.action.quickOpen",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space w v",
+    "command": "workbench.action.splitEditorRight",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space |",
+    "command": "workbench.action.splitEditorRight",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space w s",
+    "command": "workbench.action.splitEditorDown",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space w q",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space w h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space w l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space w j",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space w k",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "g D",
+    "command": "editor.action.revealDefinition",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "g d",
+    "command": "editor.action.revealDefinitionAside",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "g r",
+    "command": "editor.action.referenceSearch.trigger",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "space K",
+    "command": "editor.action.showHover",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space c a",
+    "command": "editor.action.quickFix",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space r n",
+    "command": "editor.action.rename",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "space e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space q q",
+    "command": "workbench.action.closeWindow",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space u w",
+    "command": "editor.action.toggleWordWrap",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space u l",
+    "command": "workbench.action.toggleLineNumbers",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space s r",
+    "command": "extension.toggleSearchReplace",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "%",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "key": "space e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLeftGroup"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusRightGroup"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusAboveGroup"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusBelowGroup"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "workbench.action.togglePanel"
+  }
+]
