@@ -1,87 +1,62 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-export PATH="/home/sam/.local/share/solana/install/active_release/bin:$PATH"
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-# go pathe
-export PATH=$PATH:~/go/bin
-export PATH=$PATH:/usr/local/go/bin
-#eval "$(starship init zsh)"
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# History configuration
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Use modern completion system
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# Auto suggestions (make sure zsh-autosuggestions is installed)
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999999'
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# Syntax highlighting (make sure zsh-syntax-highlighting is installed)
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zsh/fzf-tab/fzf-tab.zsh
+source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
+# Key bindings
+WORDCHARS=${WORDCHARS//\//}
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^ ' autosuggest-accept
 plugins=(
   zsh-autosuggestions
   git
   zsh-syntax-highlighting
   fzf-tab
+  asdf
 )
 # zsh auto completions
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
+# Basic auto/tab completion
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots) # Include hidden files
 # removes underline path
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
@@ -91,103 +66,30 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 bindkey '$' autosuggest-accept
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#9e9e9e'
 
-source $ZSH/oh-my-zsh.sh
-# User configuration
+# Load your existing PATH configurations
+export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.x86_64.json
+export VK_LAYER_PATH=/usr/share/vulkan/layer.d
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+export PATH=$PATH:~/go/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/root/.bun/bin:$PATH"
+path+=("$HOME/.cargo/bin")
+# Environment variables
+export ANDROID_HOME="/home/sam/Android/Sdk/"
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+export DOCKER_CONTEXT=desktop-linux
+export PNPM_HOME="/home/sam/.local/share/pnpm"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export WALLET_JSON="$(cat ~/Documents/wallety.json)"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Show the current distribution
-distribution() {
-  local dtype="unknown" # Default to unknown
-
-  # Use /etc/os-release for modern distro identification
-  if [ -r /etc/os-release ]; then
-    source /etc/os-release
-    case $ID in
-    fedora | rhel | centos)
-      dtype="redhat"
-      ;;
-    sles | opensuse*)
-      dtype="suse"
-      ;;
-    ubuntu | debian)
-      dtype="debian"
-      ;;
-    gentoo)
-      dtype="gentoo"
-      ;;
-    arch | manjaro)
-      dtype="arch"
-      ;;
-    slackware)
-      dtype="slackware"
-      ;;
-    *)
-      # Check ID_LIKE only if dtype is still unknown
-      if [ -n "$ID_LIKE" ]; then
-        case $ID_LIKE in
-        *fedora* | *rhel* | *centos*)
-          dtype="redhat"
-          ;;
-        *sles* | *opensuse*)
-          dtype="suse"
-          ;;
-        *ubuntu* | *debian*)
-          dtype="debian"
-          ;;
-        *gentoo*)
-          dtype="gentoo"
-          ;;
-        *arch*)
-          dtype="arch"
-          ;;
-        *slackware*)
-          dtype="slackware"
-          ;;
-        esac
-      fi
-
-      # If ID or ID_LIKE is not recognized, keep dtype as unknown
-      ;;
-    esac
-  fi
-
-  echo $dtype
-}
-
-DISTRIBUTION=$(distribution)
-if [ "$DISTRIBUTION" = "redhat" ] || [ "$DISTRIBUTION" = "arch" ]; then
-  alias cat='bat'
-else
-  alias cat='batcat'
-fi
-
-# aliases
+# Your existing aliases (keep all of them)
+alias cat='bat'
 alias q="exit"
 alias l="ls -lah"
 alias gcl="git clone"
@@ -205,38 +107,19 @@ alias vim="nvim"
 alias py="python3"
 alias i='sudo dnf install'
 alias list="gh repo list"
+alias run="bun run dev"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# bun completions
+# Add your existing tool configurations
 [ -s "/home/sam/.bun/_bun" ] && source "/home/sam/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Pip
-export PATH="$HOME/.local/bin:$PATH"
-#android-studio
-export ANDROID_HOME="/home/sam/Android/Sdk/"
-export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
-
-export DOCKER_CONTEXT=desktop-linux
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+. "/home/sam/.starkli/env"
 
-#deno completion
-fpath=(~/.oh-my-zsh/completions $fpath)
-autoload -U compinit
-compinit
 
-# pnpm
-export PNPM_HOME="/home/sam/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
-export WALLET_JSON="$(cat ~/Documents/wallety.json)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+# Initialize Starship
+# eval "$(starship init zsh)"
