@@ -1,8 +1,10 @@
 theme = deep
+background-opacity = 0.8
 cursor-style = block
 cursor-style-blink = true
 shell-integration-features = no-cursor
 font-family = "FiraMono Nerd Font Regular"
+font-size = 12
 window-padding-x = 10, 0
 window-padding-y = 1
 
@@ -12,3 +14,12 @@ keybind = shift+ctrl+h=new_split:left
 keybind = shift+ctrl+j=new_split:down
 keybind = shift+ctrl+k=new_split:up
 keybind = shift+ctrl+l=new_split:right
+
+keybind = unconsumed:ctrl+k=goto_split:top
+
+keybind = unconsumed:ctrl+j=goto_split:bottom
+
+keybind = unconsumed:ctrl+h=goto_split:left
+
+keybind = unconsumed:ctrl+l=goto_split:right
+
