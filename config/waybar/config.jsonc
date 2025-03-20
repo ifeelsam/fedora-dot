@@ -18,8 +18,9 @@
   "modules-right": [
     "custom/media",
     "tray",
+    "pulseaudio#microphone",
     "pulseaudio",
-    "network",
+    // "network",
     "battery",
     "custom/recording",
     "custom/do-not-disturb",
@@ -36,12 +37,14 @@
       "": "Home",
       "nautilus": "Files",
       "alacritty": "Terminal",
+      "ghostty": "Terminal",
       "Mozilla Firefox": "Firefox",
       "chat.openai.com_/": "ChatGPT 3.5",
       "web.whatsapp.com_/": "Whatsapp Web",
       "neofetch": "About PC",
-      "Enter name of file to save to…": "Save File",
+      "Save to…": "Save File",
       "Beeper (.*)": "Beeper",
+      "(.*) Discord": "Discord",
       "(.*) Thorium": "Thorium",
       "Spotify Free": "Spotify"
     },
@@ -128,7 +131,7 @@
       ],
       "ignored-sinks": [
         "Easy Effects Sink"
-      ],
+      ]
     },
     "scroll-step": 5.0,
     "on-click": "pavucontrol -t 3",
@@ -137,18 +140,18 @@
     "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
     "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
     "tooltip-format": "{icon} {desc} | {volume}%",
-    "smooth-scrolling-threshold": 1,
+    "smooth-scrolling-threshold": 1
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": " {volume}%",
+    "format-source": "",
     "format-source-muted": "",
     "on-click": "~/.config/hypr/scripts/Volume.sh --toggle-mic",
     "on-click-right": "pavucontrol -t 4",
     "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --mic-inc",
     "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --mic-dec",
     "tooltip-format": "{source_desc} | {source_volume}%",
-    "scroll-step": 5,
+    "scroll-step": 5
   },
   "battery": {
     "bat": "BAT0",
@@ -161,7 +164,7 @@
     "format-icons": [
       " ",
       " ",
-      " ,",
+      " ",
       " ",
       " "
     ],
@@ -171,7 +174,7 @@
   },
   "tray": {
     "icon-size": 20,
-    "spacing": 9,
+    "spacing": 6,
     "tooltip": false
   },
   "custom/chatgpt": {
